@@ -1,0 +1,28 @@
+{
+  "name": "desertlily",
+  "version": "0.0.0",
+  "description": "a website",
+  "main": "./node_modules/.bin/gulp",
+  "scripts": {
+    "test": "echo \"testing ... DONE!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renegare/desertlily.git"
+  },
+  "author": "Mudi <mudi@renegare.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/renegare/desertlily/issues"
+  },
+  "homepage": "https://github.com/renegare/desertlily#readme",
+  "devDependencies": {
+    "bluebird": "^2.10.2",
+    "git-rev": "^0.2.1",
+    "gulp": "^3.9.0",
+    "gulp-help": "^1.6.1",
+    "gulp-util": "^3.0.6",
+    "shelljs": "^0.5.3",
+    "tutum": "^0.2.2"
+  }
+}
