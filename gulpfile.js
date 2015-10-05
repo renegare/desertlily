@@ -1,6 +1,6 @@
 var gulp = require('gulp-help')(require('gulp')),
     gulpUtil = require('gulp-util'),
-    tutum = require('gulp-util'),
+    tutum = require('tutum'),
     Prom = require('bluebird'),
     sh = Prom.promisify(require('shelljs').exec),
     path = require('path'),
@@ -10,7 +10,8 @@ var gulp = require('gulp-help')(require('gulp')),
         });
     }),
 
-    IMAGE = __dirname.split(path.sep).pop() + '_web'
+    APP = __dirname.split(path.sep).pop(),
+    IMAGE = APP + '_web',
     TUSER = process.env.TUSER,
     TPASS = process.env.TPASS
     ;
@@ -38,14 +39,13 @@ gulp.task('push', function() {
     })
 });
 
-
+//@todo: should use the tutum api
 gulp.task('deploy', function() {
     return grev().then(function(rev) {
         return sh([
                 ['tutum login -u', TUSER, '-p', TPASS].join(' '),
-                ['tutum terminate ', IMAGE].join(''),
-                ['tutum stop ', IMAGE].join(''),
-                ['tutum service run -p 80:80 -n ', IMAGE, ' tutum.co/', TUSER,'/', IMAGE, ':', rev].join('')
+                ['tutum service terminate ', APP].join(''),
+                ['tutum service run -p 80:80 -n ', APP, ' tutum.co/', TUSER,'/', IMAGE, ':', rev].join('')
             ].join(' && '));
     })
 });
