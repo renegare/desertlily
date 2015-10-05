@@ -24,7 +24,7 @@ gulp.task('build', function() {
             return Prom.join(grev(), sh('docker-compose build'));
         })
         .spread(function(rev) {
-            return sh(['docker tag ', IMAGE, ':latest ', IMAGE, ':', rev].join(''))
+            return sh(['docker tag -f ', IMAGE, ':latest ', IMAGE, ':', rev].join(''))
         })
         ;
 });
